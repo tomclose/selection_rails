@@ -39,3 +39,10 @@
     <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
+
+
+<script>
+  var order_payload  = <%= raw OrderSerializer.new(@order).to_json %>;
+  var dishes_payload = <%= raw ActiveModel::ArraySerializer.new(@dishes, each_serializer: DishSerializer).to_json %>;
+
+</script>

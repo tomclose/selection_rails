@@ -12,6 +12,9 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 gem "nested_form"
 gem 'money-rails'
+gem "active_model_serializers"
+
+gem "pry-rails"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
