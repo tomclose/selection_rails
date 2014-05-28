@@ -24,6 +24,7 @@
     <%= f.select :meal, %w(Breakfast Lunch Dinner), {}, class: 'form-control' %>
   </div>
 
+  <label>Items</label>
   <%= f.fields_for :items, class: "form-inline" do |item_form| %>
     <div class="form-group form-inline">
       <%= item_form.collection_select :dish_id, @dishes, :id, :name, {}, class: 'form-control' %>

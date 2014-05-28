@@ -5,14 +5,24 @@
 <table class='table'>
   <tr>
     <th>Dish</th>
+    <th>Dish Price</th>
     <th>Quantity</th>
+    <th>Total Price</th>
   </tr>
   <% @order.items.each do |item| %>
   <tr>
-    <td><%= item.dish.name %></td>
+    <td><%= item.dish_name %></td>
+    <td><%= humanized_money_with_symbol item.dish_price %></td>
     <td><%= item.quantity %></td>
+    <td><%= humanized_money_with_symbol item.total_price %></td>
   </tr>
   <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <th><%= humanized_money_with_symbol @order.total_price %></th>
+  </tr>
 </table>
 
 
