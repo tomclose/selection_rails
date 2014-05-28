@@ -1,4 +1,4 @@
-<%= form_for(@order, role: 'form') do |f| %>
+<%= nested_form_for(@order, role: 'form') do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -23,6 +23,17 @@
     <%= f.label :meal %><br>
     <%= f.select :meal, %w(Breakfast Lunch Dinner), {}, class: 'form-control' %>
   </div>
+
+  <%= f.fields_for :items, class: "form-inline" do |item_form| %>
+    <div class="form-group form-inline">
+      <%= item_form.collection_select :dish_id, @dishes, :id, :name, {}, class: 'form-control' %>
+      <%= item_form.text_field :quantity, class: 'form-control' %>
+      <%= item_form.link_to_remove "Remove this item" %>
+    </div>
+  <% end %>
+  <p><%= f.link_to_add "Add an item", :items, class: 'btn btn-info' %></p>
+
+
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>

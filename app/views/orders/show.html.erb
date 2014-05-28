@@ -2,5 +2,19 @@
 
 <h2><%= @order.meal %> for <%= @order.customer %> <small><%= @order.date %></small></h2>
 
+<table class='table'>
+  <tr>
+    <th>Dish</th>
+    <th>Quantity</th>
+  </tr>
+  <% @order.items.each do |item| %>
+  <tr>
+    <td><%= item.dish.name %></td>
+    <td><%= item.quantity %></td>
+  </tr>
+  <% end %>
+</table>
+
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

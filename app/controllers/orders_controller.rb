@@ -15,10 +15,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @dishes = Dish.all
   end
 
   # GET /orders/1/edit
   def edit
+    @dishes = Dish.all
   end
 
   # POST /orders
@@ -31,6 +33,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
+        @dishes = Dish.all
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -45,6 +48,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
+        @dishes = Dish.all
         format.html { render action: 'edit' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -69,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer, :date, :meal)
+      params.require(:order).permit(:customer, :date, :meal, items_attributes: [:id, :dish_id, :quantity, :_destroy])
     end
 end
