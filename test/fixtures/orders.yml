@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer: MyString
+  date: 2014-05-28
+  meal: MyString
+
+two:
+  customer: MyString
+  date: 2014-05-28
+  meal: MyString
